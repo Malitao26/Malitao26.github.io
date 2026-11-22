@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Mark John B. Malitao, a Computer Engineering student focused on embedded systems, robotics, IoT and automation.">
+  <meta name="theme-color" content="#0a1020">
+  <title>Mark John B. Malitao | Computer Engineering Portfolio</title>
+  <style>
+    :root {
+      --bg: #080e1b;
+      --bg-deep: #070b14;
+      --surface: #101b30;
+      --surface-alt: #111e34;
+      --stroke: #26354a;
+      --text: #ecf5ff;
+      --muted: #a8b9cb;
+      --accent: #60e6d7;
+      --accent2: #7da9ff;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.65; }
+    body::before { content: ""; position: fixed; z-index: -2; inset: 0; background: radial-gradient(ellipse 47% 26% at 75% 7%, #1a3c6266, transparent 80%),radial-gradient(ellipse 45% 30% at 4% 42%, #11665922, transparent 80%); pointer-events: none; }
+    ::selection { color: #06131a; background: var(--accent); }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; border-radius: 3px; }
+    .container { width: min(1100px, calc(100% - 48px)); margin: auto; }
+    .nav-wrap { position: sticky; top: 0; z-index: 30; border-bottom: 1px solid #243247bb; background: #091120ed; backdrop-filter: blur(18px); }
+    nav { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 800; letter-spacing: .02em; }
+    .brand-mark { height: 38px; width: 38px; display: grid; place-items: center; color: #081624; background: linear-gradient(135deg, var(--accent), var(--accent2)); border-radius: 12px; font-size: 15px; }
+    .brand span:last-child { font-size: 14px; white-space: nowrap; }
+    .nav-links { display: flex; align-items: center; flex-wrap: wrap; gap: clamp(10px, 2.2vw, 26px); }
+    .nav-links a { text-decoration: none; color: #c1d0dd; font-size: 13px; font-weight: 600; transition: color .2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links .nav-contact { padding: 9px 16px; color: #05141b; background: var(--accent); border-radius: 9px; }
+    .hero { display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 48px; min-height: 590px; padding: 90px 0 104px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-family: var(--mono); font-weight: 700; text-transform: uppercase; letter-spacing: .11em; color: var(--accent); }
+    .eyebrow .dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 15px var(--accent); }
+    h1,h2,h3,p { margin-top: 0; }
+    h1 { margin: 24px 0 14px; font-size: clamp(3rem, 6.2vw, 5.45rem); letter-spacing: -.065em; line-height: 1.04; }
+    h1 .gradient { background: linear-gradient(95deg, #f5faff 2%, #8cc9f9 45%, #6aebd9 99%); background-clip: text; -webkit-background-clip: text; color: transparent; }
+    .hero-lead { margin: 18px 0 25px; max-width: 550px; font-size: clamp(17px,1.6vw,19px); color: #bed0dd; line-height: 1.8; }
+    .hero-tagline { color: #93abbf; font-family: var(--mono); font-size: 12px; letter-spacing: .02em; margin-bottom: 28px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; text-decoration: none; font-weight: 750; font-size: 13px; padding: 12px 20px; border-radius: 10px; border: 1px solid transparent; transition: transform .2s, border-color .2s, background-color .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--accent); color: #061a20; box-shadow: 0 6px 28px #31bcad27; }
+    .btn-secondary { color: #ecf5ff; border-color: #40516a; background: #132036; }
+    .btn-secondary:hover { border-color: var(--accent2); }
+    .hero-panel { position: relative; border: 1px solid #2a4960; border-radius: 24px; background: linear-gradient(145deg, #11243d, #101b30 65%, #0d1d2c); box-shadow: 0 24px 88px #01050b99, inset 0 1px 0 #ffffff12; padding: 25px; overflow: hidden; }
+    .hero-panel::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(#a0e7fa08 1px, transparent 1px),linear-gradient(90deg,#a0e7fa08 1px, transparent 1px); background-size: 27px 27px; mask-image: linear-gradient(to bottom, black, transparent); }
+    .panel-top,.panel-foot { position: relative; z-index: 1; display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+    .panel-top { color: #9fbacd; font-family: var(--mono); font-size: 11px; letter-spacing: .04em; }
+    .panel-status { display: flex; align-items: center; gap: 7px; color: #80edc5; }
+    .panel-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #80edc5; }
+    .schematic { position: relative; z-index: 1; width: 100%; display: block; margin: 30px auto 24px; }
+    .panel-foot { border-top: 1px solid #ffffff20; padding-top: 17px; font-size: 12px; color: #bdd0e0; }
+    .panel-foot strong { font-size: 11px; color: var(--accent); font-family: var(--mono); letter-spacing: .07em; }
+    .section { padding: 68px 0; scroll-margin-top: 95px; }
+    .section + .section { border-top: 1px solid #213249aa; }
+    .section-heading { margin-bottom: 34px; display: flex; gap: 18px; align-items: flex-start; justify-content: space-between; }
+    .section-index { margin: 5px 0 13px; font: 700 12px var(--mono); letter-spacing: .14em; color: var(--accent); }
+    h2 { font-size: clamp(30px, 3.7vw, 43px); line-height: 1.18; letter-spacing: -.045em; margin-bottom: 11px; }
+    .section-intro { color: var(--muted); font-size: 15px; max-width: 730px; margin: 0; }
+    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 20px; }
+    .about-card, .info-card, .project-card, .document-card, .school-card { border: 1px solid var(--stroke); background: linear-gradient(155deg,#14223a,#101a2c); border-radius: 17px; }
+    .about-card, .info-card { padding: 29px; }
+    .about-card p { color: #c4d3e1; font-size: 15px; margin-bottom: 15px; }
+    .about-card p:last-child { margin-bottom: 0; }
+    .info-card { background: linear-gradient(150deg, #102d3b, #0e2431); }
+    .info-label { font: 700 11px var(--mono); color: var(--accent); letter-spacing: .11em; text-transform: uppercase; }
+    .info-card h3 { font-size: 24px; letter-spacing: -.035em; margin: 16px 0 8px; }
+    .info-card p { font-size: 14px; color: #b6cbda; margin-bottom: 0; }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .skill-card { border: 1px solid var(--stroke); border-radius: 16px; padding: 25px 24px 26px; background: #111c30; }
+    .skill-icon { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid #4be8d54a; background: #133b48; border-radius: 11px; color: var(--accent); font: bold 17px var(--mono); margin-bottom: 23px; }
+    .skill-card h3 { font-size: 18px; letter-spacing: -.02em; margin-bottom: 15px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { font-size: 11px; line-height: 1.3; color: #c6d8e8; border: 1px solid #3b4e66; padding: 8px 10px; border-radius: 8px; background: #1b2b43; }
+    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .project-card { overflow: hidden; display: flex; flex-direction: column; transition: transform .25s, border-color .25s; }
+    .project-card:hover { transform: translateY(-4px); border-color: #4a8f9f; }
+    .project-visual { position: relative; min-height: 150px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-bottom: 1px solid #ffffff13; }
+    .project-visual::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(#ffffff07 1px, transparent 1px), linear-gradient(90deg,#ffffff07 1px, transparent 1px); background-size: 23px 23px; }
+    .project-visual svg { position: relative; z-index: 1; width: 135px; max-height: 100px; filter: drop-shadow(0 15px 15px #0005); }
+    .v-one { background: radial-gradient(circle at 30% 30%,#2b978d60,transparent 65%),linear-gradient(125deg,#102f41,#101c34); }
+    .v-two { background: radial-gradient(circle at 70% 30%,#dc7e4540,transparent 66%),linear-gradient(125deg,#332334,#101c34); }
+    .v-three { background: radial-gradient(circle at 35% 30%,#6b85df55,transparent 66%),linear-gradient(125deg,#182d4d,#101c34); }
+    .v-four { background: radial-gradient(circle at 68% 20%,#9679ed55,transparent 66%),linear-gradient(125deg,#292444,#101c34); }
+    .v-five { background: radial-gradient(circle at 40% 35%,#6bcb9b50,transparent 66%),linear-gradient(125deg,#153940,#101c34); }
+    .project-copy { padding: 24px; display: flex; flex: 1; flex-direction: column; }
+    .project-type { color: var(--accent); font: 700 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
+    .project-card h3 { font-size: 20px; letter-spacing: -.032em; line-height: 1.3; margin-bottom: 11px; }
+    .project-card p { font-size: 14px; color: #b9cbdc; line-height: 1.75; margin-bottom: 18px; }
+    .project-card .chips { margin-top: auto; }
+    .documents-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .document-card { padding: 28px; display: flex; align-items: flex-start; gap: 18px; }
+    .document-icon { flex: none; width: 54px; height: 62px; display: grid; place-items: center; border-radius: 11px; background: #163e48; color: var(--accent); border: 1px solid #287778; }
+    .document-icon svg { width: 28px; }
+    .document-card h3 { font-size: 20px; margin-bottom: 7px; }
+    .document-card p { color: var(--muted); font-size: 13px; margin-bottom: 16px; }
+    .document-card a { font-size: 13px; font-weight: 750; text-underline-offset: 5px; color: var(--accent); }
+    .education-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .school-card { padding: 26px; }
+    .school-card .dates { color: var(--accent); font: 700 12px var(--mono); letter-spacing: .05em; }
+    .school-card h3 { font-size: 19px; margin: 12px 0 6px; }
+    .school-card p { color: #b2c4d4; font-size: 14px; margin: 0; }
+    .contact-section { padding-bottom: 86px; }
+    .contact-box { text-align: center; position: relative; overflow: hidden; padding: clamp(34px, 7vw, 70px) 24px; border: 1px solid #3b797b; border-radius: 22px; background: radial-gradient(ellipse at 50% -50%,#2b8c9a50,transparent 70%),linear-gradient(135deg,#123341,#11233b); }
+    .contact-box .section-index { margin-bottom: 10px; }
+    .contact-box h2 { margin-bottom: 13px; }
+    .contact-box p { color: #b9cddd; margin: 0 auto 24px; max-width: 570px; font-size: 15px; }
+    footer { border-top: 1px solid #25354a; padding: 28px 0; }
+    footer .container { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 12px; color: #9aafc1; }
+    footer a { color: #a9cad6; text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; padding: 72px 0 65px; gap: 38px; min-height: unset; }
+      .hero-panel { max-width: 520px; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 13px; }
+    }
+    @media (max-width: 600px) {
+      .container { width: min(100% - 34px, 1100px); }
+      nav { padding: 15px 0; flex-direction: column; align-items: flex-start; }
+      .nav-links { width: 100%; gap: 13px; overflow-x: auto; flex-wrap: nowrap; padding: 4px 0 6px; }
+      .nav-links a { white-space: nowrap; font-size: 12px; }
+      .nav-links .nav-contact { padding: 6px 10px; }
+      .hero { padding-top: 61px; }
+      h1 { font-size: clamp(43px, 11vw, 62px); }
+      .hero-lead { font-size: 16px; }
+      .section { padding: 51px 0; scroll-margin-top: 125px; }
+      .skills-grid, .projects-grid, .documents-grid, .education-grid { grid-template-columns: 1fr; }
+      .document-card { padding: 23px; }
+      footer .container { flex-direction: column; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .project-card,.btn { transition: none; } }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap">
+    <nav class="container" aria-label="Main navigation">
+      <a class="brand" href="#home"><span class="brand-mark">MM</span><span>MARK JOHN MALITAO<span style="color:var(--accent)">.</span></span></a>
+      <div class="nav-links">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a>
+        <a href="#education">Education</a><a href="#documents">Documents</a><a class="nav-contact" href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+  <main id="home">
+    <header class="container hero">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>Computer Engineering Portfolio / 2026</div>
+        <h1>Mark John<br><span class="gradient">B. Malitao.</span></h1>
+        <p class="hero-lead">Computer Engineering student interested in building practical solutions through <strong style="color:#f3faff">embedded systems, robotics, IoT, and automation.</strong></p>
+        <p class="hero-tagline">STI College Calamba &nbsp;·&nbsp; Hardware × Software</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#projects">Explore My Projects <span aria-hidden="true">↗</span></a>
+          <a class="btn btn-secondary" href="RESUME.pdf" target="_blank" rel="noopener">View Resume <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="hero-panel" aria-label="Illustrative hardware-to-software systems diagram">
+        <div class="panel-top"><span>EMBEDDED_SYSTEMS / OVERVIEW</span><span class="panel-status">ENGINEERING</span></div>
+        <svg class="schematic" viewBox="0 0 440 300" role="img" aria-label="Diagram showing sensors, microcontroller, actuators and monitoring">
+          <defs><linearGradient id="chipg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#58e5d0"/><stop offset="1" stop-color="#5d9ef0"/></linearGradient></defs>
+          <g fill="none" stroke="#5794a8" stroke-width="2" opacity=".65"><path d="M125 85H186V150H210"/><path d="M315 150H344V84H360"/><path d="M263 190V226"/><path d="M220 150H183V235H136"/></g>
+          <g stroke="#65dfce" stroke-width="2" fill="#173746"><rect x="25" y="52" width="118" height="64" rx="12"/><rect x="296" y="52" width="120" height="64" rx="12"/><rect x="158" y="218" width="124" height="57" rx="12"/></g>
+          <g fill="#d7ecf4" font-family="ui-monospace,monospace" font-size="13" text-anchor="middle"><text x="84" y="79">SENSORS</text><text x="84" y="96" fill="#78c3cc" font-size="10">INPUT</text><text x="356" y="79">ACTUATORS</text><text x="356" y="96" fill="#78c3cc" font-size="10">OUTPUT</text><text x="220" y="245">MONITORING</text><text x="220" y="260" fill="#78c3cc" font-size="10">DASHBOARD</text></g>
+          <rect x="173" y="114" width="94" height="81" rx="14" fill="#102d43" stroke="url(#chipg)" stroke-width="3"/>
+          <rect x="188" y="130" width="64" height="50" rx="7" fill="#28566a"/>
+          <g fill="#a9fff2" font-family="ui-monospace,monospace" font-weight="bold" font-size="13" text-anchor="middle"><text x="220" y="151">MCU</text><text x="220" y="168" font-size="9">CONTROL</text></g>
+          <g fill="#58e5d0"><circle cx="186" cy="150" r="4"/><circle cx="295" cy="150" r="4"/><circle cx="220" cy="218" r="4"/></g>
+          <g stroke="#58e5d0" stroke-width="3"><path d="M179 129h-11m11 15h-11m11 15h-11m11 15h-11m99-45h11m-11 15h11m-11 15h11m-11 15h11"/></g>
+        </svg>
+        <div class="panel-foot"><span>Hardware + Firmware + Integration</span><strong>IoT / ROBOTICS / AUTOMATION</strong></div>
+      </div>
+    </header>
+
+    <section class="section" id="about"><div class="container">
+      <div class="section-heading"><div><div class="section-index">01 / INTRODUCTION</div><h2>About Me</h2><p class="section-intro">An engineering mindset with a focus on turning concepts into working prototypes.</p></div></div>
+      <div class="about-grid">
+        <div class="about-card">
+          <p>I am <strong>Mark John B. Malitao</strong>, a Bachelor of Science in Computer Engineering student at <strong>STI College Calamba</strong>.</p>
+          <p>My academic experience focuses on hardware-software integration, IoT systems, and microcontroller programming using Arduino and ESP32. Through my projects, I have worked on prototypes ranging from autonomous robots and access-control systems to industrial process automation.</p>
+          <p>I aim to apply my knowledge of electronics, sensor integration, and embedded systems to meaningful engineering work while continuing to develop my technical skills.</p>
+        </div>
+        <div class="info-card"><div class="info-label">AREA OF INTEREST</div><h3>From circuits<br>to complete systems.</h3><p>Prototyping, programming, testing, and integrating components to solve practical problems.</p></div>
+      </div>
+    </div></section>
+
+    <section class="section" id="skills"><div class="container">
+      <div class="section-heading"><div><div class="section-index">02 / EXPERTISE</div><h2>Technical Skills</h2><p class="section-intro">Technologies and tools listed in my current resume.</p></div></div>
+      <div class="skills-grid">
+        <div class="skill-card"><span class="skill-icon" aria-hidden="true">{ }</span><h3>Hardware & Embedded Systems</h3><div class="chips"><span class="chip">Arduino</span><span class="chip">ESP32</span><span class="chip">Circuit Design</span><span class="chip">Embedded Systems</span><span class="chip">Sensor Integration</span><span class="chip">PCB Design Concepts</span></div></div>
+        <div class="skill-card"><span class="skill-icon" aria-hidden="true">&lt;/&gt;</span><h3>Programming & Languages</h3><div class="chips"><span class="chip">C / C++</span><span class="chip">Hardware Description Languages (HDL)</span></div></div>
+        <div class="skill-card"><span class="skill-icon" aria-hidden="true">⚙</span><h3>Software & Tools</h3><div class="chips"><span class="chip">Arduino IDE</span><span class="chip">Firebase</span><span class="chip">VS Code</span><span class="chip">Git</span><span class="chip">Proteus / Multisim</span><span class="chip">Windows</span></div></div>
+      </div>
+    </div></section>
+
+    <section class="section" id="projects"><div class="container">
+      <div class="section-heading"><div><div class="section-index">03 / SELECTED WORK</div><h2>Academic Projects</h2><p class="section-intro">Five projects from my resume, covering automation, robotics, security, and sensing.</p></div></div>
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-visual v-one"><svg viewBox="0 0 150 108" fill="none" aria-hidden="true"><rect x="32" y="18" width="86" height="73" rx="11" fill="#224b61" stroke="#8deedb" stroke-width="3"/><path d="M32 41H118" stroke="#5bc7c0" stroke-width="2"/><path d="M54 41V82M96 41V82" stroke="#8deedb" stroke-width="4"/><path d="M56 59L94 77M94 59L56 77" stroke="#8deedb" stroke-width="4"/><path d="M76 5V23M57 5H95" stroke="#a2e2f5" stroke-width="5"/><path d="M43 91V103M108 91V103" stroke="#a2e2f5" stroke-width="6"/></svg></div>
+          <div class="project-copy"><div class="project-type">01 / Thesis Project</div><h3>IoT-Enabled Dishwashing Liquid Production System</h3><p>Designed and developed an automated manufacturing system with a <strong>75-liter mixing drum</strong> and specialized gear motors. ESP32 and Firebase enable real-time monitoring of production metrics, system status, and inventory.</p><div class="chips"><span class="chip">ESP32</span><span class="chip">Firebase</span><span class="chip">IoT Monitoring</span><span class="chip">Automation</span></div></div>
+        </article>
+        <article class="project-card">
+          <div class="project-visual v-two"><svg viewBox="0 0 150 108" fill="none" aria-hidden="true"><rect x="28" y="40" width="92" height="44" rx="12" fill="#3f384e" stroke="#ffc48d" stroke-width="3"/><circle cx="46" cy="86" r="13" fill="#1b2534" stroke="#ffc48d" stroke-width="5"/><circle cx="104" cy="86" r="13" fill="#1b2534" stroke="#ffc48d" stroke-width="5"/><rect x="56" y="26" width="37" height="26" rx="5" fill="#a05840" stroke="#ffc48d" stroke-width="2"/><path d="M75 25V11" stroke="#ffc48d" stroke-width="3"/><path d="M75 6Q92 18 75 29Q58 18 75 6" fill="#ffac71"/><circle cx="40" cy="56" r="5" fill="#fae2c0"/><circle cx="110" cy="56" r="5" fill="#fae2c0"/></svg></div>
+          <div class="project-copy"><div class="project-type">02 / Autonomous Robotics</div><h3>Arduino Fire Fighting Robot</h3><p>Built an autonomous mobile robot with MQ-2 gas and flame sensors for hazard detection. Programmed navigation and obstacle avoidance using an Arduino Uno and ultrasonic sensors.</p><div class="chips"><span class="chip">Arduino Uno</span><span class="chip">MQ-2 Sensor</span><span class="chip">Flame Sensor</span><span class="chip">Ultrasonic Sensor</span></div></div>
+        </article>
+        <article class="project-card">
+          <div class="project-visual v-three"><svg viewBox="0 0 150 108" fill="none" aria-hidden="true"><path d="M13 95C13 35 123 95 131 13" stroke="#829be7" stroke-width="12" stroke-linecap="round"/><path d="M13 95C13 35 123 95 131 13" stroke="#d9e8ff" stroke-width="2" stroke-dasharray="8 7" stroke-linecap="round"/><rect x="46" y="32" width="62" height="37" rx="10" fill="#243f69" stroke="#b8ccff" stroke-width="3"/><circle cx="58" cy="70" r="10" fill="#1a253c" stroke="#b8ccff" stroke-width="4"/><circle cx="98" cy="70" r="10" fill="#1a253c" stroke="#b8ccff" stroke-width="4"/><path d="M59 39H95" stroke="#94f9f0" stroke-width="3"/></svg></div>
+          <div class="project-copy"><div class="project-type">03 / Mobile Robotics</div><h3>Line Tracing Robot</h3><p>Engineered a fast-response robot using infrared array sensors and L298N motor drivers for track navigation. Optimized line-following logic for accurate path tracking and rapid motor response.</p><div class="chips"><span class="chip">Infrared Sensors</span><span class="chip">L298N</span><span class="chip">Path Tracking</span><span class="chip">Motor Control</span></div></div>
+        </article>
+        <article class="project-card">
+          <div class="project-visual v-four"><svg viewBox="0 0 150 108" fill="none" aria-hidden="true"><rect x="46" y="9" width="58" height="93" rx="9" fill="#343153" stroke="#c9a7ff" stroke-width="3"/><circle cx="75" cy="41" r="18" stroke="#c9a7ff" stroke-width="2"/><path d="M61 43C61 24 89 24 89 43M67 50C60 33 90 33 83 50M73 52V39M81 57C88 45 77 33 69 42" stroke="#e6d4ff" stroke-width="2" stroke-linecap="round"/><rect x="60" y="71" width="30" height="17" rx="3" stroke="#b39cf2" stroke-width="2"/><circle cx="66" cy="77" r="2" fill="#e4caff"/><circle cx="75" cy="77" r="2" fill="#e4caff"/><circle cx="84" cy="77" r="2" fill="#e4caff"/></svg></div>
+          <div class="project-copy"><div class="project-type">04 / Security & Access Control</div><h3>Fingerprint Based Door Lock System</h3><p>Developed an Arduino-based biometric access control system combining an optical fingerprint module and keypad. Integrated a solenoid lock and ultrasonic sensors for secure entry and door state monitoring.</p><div class="chips"><span class="chip">Arduino</span><span class="chip">Fingerprint Module</span><span class="chip">Keypad</span><span class="chip">Solenoid Lock</span></div></div>
+        </article>
+        <article class="project-card">
+          <div class="project-visual v-five"><svg viewBox="0 0 150 108" fill="none" aria-hidden="true"><path d="M47 28H105L97 94H55L47 28Z" fill="#254b4a" stroke="#95eac7" stroke-width="3"/><path d="M40 26H110" stroke="#95eac7" stroke-width="6" stroke-linecap="round"/><path d="M61 41V82M75 41V82M89 41V82" stroke="#51b8a7" stroke-width="3"/><path d="M61 15C61 9 70 6 75 15M75 15C81 7 89 9 89 15" stroke="#95eac7" stroke-width="3" stroke-linecap="round"/><circle cx="117" cy="58" r="10" fill="#24555d" stroke="#9ef9d5" stroke-width="2"/><path d="M114 58L117 61L122 55" stroke="#9ef9d5" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <div class="project-copy"><div class="project-type">05 / Smart Automation</div><h3>Smart Waste Sorting System</h3><p>Prototyped an automated waste-sorting bin using servo motors, ultrasonic sensors, and inductive components to detect and separate materials, controlled by microcontroller-based sorting logic.</p><div class="chips"><span class="chip">Servo Motors</span><span class="chip">Ultrasonic Sensor</span><span class="chip">Inductive Sensing</span><span class="chip">Microcontroller</span></div></div>
+        </article>
+      </div>
+    </div></section>
+
+    <section class="section" id="education"><div class="container">
+      <div class="section-heading"><div><div class="section-index">04 / ACADEMIC BACKGROUND</div><h2>Education</h2></div></div>
+      <div class="education-grid">
+        <div class="school-card"><div class="dates">2023 – PRESENT</div><h3>Bachelor of Science in Computer Engineering</h3><p>STI College Calamba</p></div>
+        <div class="school-card"><div class="dates">2021 – 2023</div><h3>Senior High School</h3><p>Saint Vincent College of Cabuyao</p></div>
+      </div>
+    </div></section>
+
+    <section class="section" id="documents"><div class="container">
+      <div class="section-heading"><div><div class="section-index">05 / APPLICATION DOCUMENTS</div><h2>Resume & Cover Letter</h2><p class="section-intro">Access the PDF documents included with this portfolio.</p></div></div>
+      <div class="documents-grid">
+        <div class="document-card"><span class="document-icon" aria-hidden="true"><svg viewBox="0 0 30 32" fill="none"><path d="M6 3H19L25 10V29H6V3Z" stroke="currentColor" stroke-width="2"/><path d="M18 3V11H25M10 17H21M10 22H21" stroke="currentColor" stroke-width="2"/></svg></span><div><h3>Professional Resume</h3><p>Education, skills, objective, and academic engineering projects.</p><a href="RESUME.pdf" target="_blank" rel="noopener">Open Resume.pdf ↗</a></div></div>
+        <div class="document-card"><span class="document-icon" aria-hidden="true"><svg viewBox="0 0 30 32" fill="none"><path d="M4 7H26V25H4V7Z" stroke="currentColor" stroke-width="2"/><path d="M4 9L15 18L26 9" stroke="currentColor" stroke-width="2"/></svg></span><div><h3>Application Cover Letter</h3><p>Cover letter prepared for my engineering training application.</p><a href="COVERLETTER.pdf" target="_blank" rel="noopener">Open Coverletter.pdf ↗</a></div></div>
+      </div>
+    </div></section>
+
+    <section class="section contact-section" id="contact"><div class="container">
+      <div class="contact-box"><div class="section-index">06 / LET'S CONNECT</div><h2>Let's build something useful.</h2><p>Interested in my work or have an engineering opportunity? Feel free to reach out through email or visit my GitHub profile.</p><div class="actions" style="justify-content:center"><a class="btn btn-primary" href="mailto:markmalitao26@gmail.com">Email Me ↗</a><a class="btn btn-secondary" href="https://github.com/Malitao26" target="_blank" rel="noopener noreferrer">GitHub Profile ↗</a></div></div>
+    </div></section>
+  </main>
+  <footer><div class="container"><span>© 2026 Mark John B. Malitao · Computer Engineering Portfolio</span><span><a href="#home">Back to top ↑</a></span></div></footer>
+</body>
+</html>
