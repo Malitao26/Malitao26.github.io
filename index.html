@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mark John Malitao | Portfolio</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1220;
+      color: #e8eef8;
+      line-height: 1.7;
+    }
+    nav {
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: #111c30;
+    }
+    nav a { color: #e8eef8; margin-right: 15px; text-decoration: none; }
+    .logo { font-weight: bold; color: #60a5fa; }
+    header {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(135deg,#10213e,#0b1220);
+    }
+    h1 { font-size: clamp(32px,6vw,52px); margin-bottom: 0; }
+    h2 { color: #60a5fa; }
+    .subtitle { color: #9fb1cc; }
+    section { max-width: 1000px; margin: auto; padding: 55px 24px; }
+    .card {
+      background: #17243a;
+      border: 1px solid #293a53;
+      padding: 24px;
+      border-radius: 14px;
+      margin: 16px 0;
+    }
+    .button {
+      display: inline-block;
+      background: #2563eb;
+      padding: 12px 22px;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      margin: 8px;
+    }
+    footer { text-align: center; padding: 30px; color: #9fb1cc; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">MJ MALITAO</div>
+    <div>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#documents">Documents</a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Mark John Malitao</h1>
+    <p class="subtitle">BS Computer Engineering Student</p>
+    <p>Electronics | Embedded Systems | Automation</p>
+    <a class="button" href="#projects">View My Projects</a>
+    <a class="button" href="RESUME.pdf" target="_blank">View Resume</a>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I am a Bachelor of Science in Computer Engineering
+      student at STI College Calamba with an interest in
+      embedded systems, electronics, and automation.
+      I enjoy developing solutions that combine hardware
+      and software to address real-world challenges.
+    </p>
+  </section>
+
+  <section id="skills">
+    <h2>Technical Skills</h2>
+    <div class="card">
+      <p>Programming: Python, Arduino C/C++, MySQL</p>
+      <p>Hardware: Arduino, Raspberry Pi, ESP32</p>
+      <p>Electronics: Sensors, Motors, Relays, Circuit Wiring</p>
+      <p>Other: Troubleshooting, System Integration, Teamwork</p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Academic Projects</h2>
+    <div class="card">
+      <h3>IoT-Enabled Dishwashing Liquid Production System</h3>
+      <p>
+        A capstone system designed to automate ingredient
+        measurement, mixing, and dispensing, with real-time
+        production monitoring.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Smart Kiosk for Administrative Transactions</h3>
+      <p>
+        A proposed kiosk system for automating payments,
+        document requests, and transaction processing
+        in a school environment.
+      </p>
+    </div>
+  </section>
+
+  <section id="documents">
+    <h2>Resume & Cover Letter</h2>
+    <p>View my professional application documents below.</p>
+    <a class="button" href="RESUME.pdf" target="_blank">
+      View Resume
+    </a>
+    <a class="button" href="COVERLETTER.pdf" target="_blank">
+      View Cover Letter
+    </a>
+  </section>
+
+  <footer>
+    <p>© 2026 Mark John Malitao | Computer Engineering</p>
+  </footer>
+</body>
+</html>
